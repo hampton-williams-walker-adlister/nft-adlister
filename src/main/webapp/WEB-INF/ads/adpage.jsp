@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<container>
+    <h1>The Individuals Ad's Title</h1>
+    <img src="#" alt="footballPicture">
+    <div>Player Name</div>
+    <div>Player Position</div>
+</container>
 
 </body>
 </html>
