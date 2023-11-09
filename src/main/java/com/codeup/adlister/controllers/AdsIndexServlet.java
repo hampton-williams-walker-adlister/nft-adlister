@@ -1,7 +1,6 @@
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,5 +15,4 @@ public class AdsIndexServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
     }
 
-//    Ryan was here
 }
