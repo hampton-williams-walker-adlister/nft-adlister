@@ -15,6 +15,14 @@ public class ListAdsDao implements Ads {
         return ads;
     }
 
+    @Override
+    public List<Ad> findMultiple(String name) {
+        if (ads == null) {
+            ads = generateAds();
+        }
+        return ads;
+    }
+
     public Long insert(Ad ad) {
         // make sure we have ads
         if (ads == null) {

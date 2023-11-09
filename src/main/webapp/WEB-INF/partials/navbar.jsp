@@ -10,13 +10,24 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Ads</a>
+                    <a class="nav-link" href="/ads">Ads</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ads/create">Create</a>
                 </li>
             </ul>
-            <form method="GET" action="/ads" class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form method="POST" action="/ads" class="d-flex m-0" role="search">
+                <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>

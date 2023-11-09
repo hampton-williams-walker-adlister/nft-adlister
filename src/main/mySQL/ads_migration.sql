@@ -4,6 +4,13 @@ drop table if exists ads;
 
 CREATE TABLE ads
 (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user INT UNSIGNED NOT NULL,
+    player_name VARCHAR(50)  NOT NULL,
+    number int UNSIGNED not null,
+    price int unsigned not null,
+    date_posted date         not null,
+
     id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
     user        INT UNSIGNED NOT NULL,
     player      VARCHAR(50)  NOT NULL,
@@ -11,10 +18,6 @@ CREATE TABLE ads
     player_position INT UNSIGNED not null,
     number      int UNSIGNED not null,
     price       int unsigned not null,
-    PRIMARY KEY (id),
-    FOREIGN KEY (user) references users (id),
-    FOREIGN KEY (player_position) references position (id),
-    FOREIGN KEY (player_team) references teams (id)
 );
 
 
