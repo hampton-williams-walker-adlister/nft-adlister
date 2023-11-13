@@ -15,6 +15,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/ads/create">Create</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/tester">Test page</a>
+                </li>
             </ul>
             <form method="POST" action="/ads" class="d-flex m-0" role="search">
                 <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
