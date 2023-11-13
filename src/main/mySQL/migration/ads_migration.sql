@@ -18,5 +18,3 @@ CREATE TABLE ads
 );
 
 
-
-
