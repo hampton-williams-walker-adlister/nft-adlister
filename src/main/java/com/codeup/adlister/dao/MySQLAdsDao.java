@@ -3,7 +3,6 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.util.Config;
 import com.mysql.cj.jdbc.Driver;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,15 +14,16 @@ public class MySQLAdsDao implements Ads {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                config.getUrl(),
-                config.getUser(),
-                config.getPassword()
+                Config.getUrl(),
+                Config.getUser(),
+                Config.getPassword()
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
         }
     }
 
+    //get a list of all ads
     @Override
     public List<Ad> all() {
         PreparedStatement stmt = null;
@@ -36,6 +36,20 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    @Override
+    public List<Ad> findMultiple(String name) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads WHERE player_name LIKE ?");
+            stmt.setString(1, "%" + name + "%");
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving one of the ads.", e);
+        }
+    }
+
+    //insert ads into database
     @Override
     public Long insert(Ad ad) {
         try {

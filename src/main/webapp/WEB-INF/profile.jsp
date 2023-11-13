@@ -6,7 +6,7 @@
     </jsp:include>
 </head>
 <body>
-
+    <jsp:include page="/WEB-INF/partials/logged_in_navbar.jsp" />
     <div class="container">
         <h1>Welcome, ${sessionScope.user.username}!</h1>
     </div>
