@@ -9,4 +9,4 @@ CREATE TABLE position
     PRIMARY KEY (id)
 );
 
-# SELECT position_name FROM position;
+SELECT position_name FROM position;
