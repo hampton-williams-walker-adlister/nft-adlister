@@ -19,12 +19,14 @@
     <div>
         <label>Please Select a Team:</label>
 
-        <select name="teamNames">
-            <option selected>Teams</option>
-            <option value="Cowboys">Cowboys</option>
-            <option value="Eagles">Eagles</option>
-            <option value="Washington Football Team">Washington Football Team</option>
-        </select>
+        <label>
+            <select name="teamName">
+                <option selected>Teams</option>
+                <option value="Cowboys">Cowboys</option>
+                <option value="Eagles">Eagles</option>
+                <option value="Washington Football Team">Washington Football Team</option>
+            </select>
+        </label>
     </div>
 
     <input type="submit" value="Submit" >
