@@ -24,7 +24,8 @@
 
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
-            <p>${ad.playerName}</p>
+            <p>${ad.id}</p>
+            <p><a href="/adpage?adID=${ad.id}">${ad.playerName}</a></p>
             <p>${ad.number}</p>
             <p>${ad.price}</p>
             <p>${ad.description}</p>
