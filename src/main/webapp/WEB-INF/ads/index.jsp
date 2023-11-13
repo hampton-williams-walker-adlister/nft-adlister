@@ -7,14 +7,14 @@
     </jsp:include>
 </head>
 <body>
-<jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
 <div class="container">
     <h1>Here Are all the ads!</h1>
 
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
-            <p>${ad.playerName}</p>
+            <p>${ad.id}</p>
+            <p><a href="/adpage?adID=${ad.id}">${ad.playerName}</a></p>
             <p>${ad.number}</p>
             <p>${ad.price}</p>
             <p>${ad.description}</p>

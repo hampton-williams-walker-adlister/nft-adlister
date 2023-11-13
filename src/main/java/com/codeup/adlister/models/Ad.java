@@ -8,6 +8,15 @@ public class Ad {
     private String price;
     private String description;
 
+    public Ad(long id, long userId, String playerName, String number, String price, String description) {
+        this.id = id;
+        this.userId = userId;
+        this.playerName = playerName;
+        this.number = number;
+        this.price = price;
+        this.description = description;
+    }
+
     public Ad(long userId, String playerName, String number, String price, String description) {
         this.userId = userId;
         this.playerName = playerName;
@@ -15,6 +24,11 @@ public class Ad {
         this.price = price;
         this.description = description;
     }
+
+    public Ad() {
+        
+    }
+
     public long getId() {
         return id;
     }
