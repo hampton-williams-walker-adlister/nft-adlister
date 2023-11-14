@@ -17,4 +17,6 @@ CREATE TABLE ads
     FOREIGN KEY (player_team) references teams (id)
 );
 
+alter table ads
+add column date DATE not null;
 
