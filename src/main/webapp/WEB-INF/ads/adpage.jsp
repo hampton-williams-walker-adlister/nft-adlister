@@ -11,12 +11,13 @@
 
 <div class="container">
     <h1>Here is an individual Ad!</h1>
-        <div class="col-md-6">
-            <p>${ad.id}</p>
-            <p>${ad.playerName}</p>
-            <p>${ad.number}</p>
-            <p>${ad.price}</p>
-            <p>${ad.description}</p>
-        </div>
+    <div class="col-md-6">
+        <p><a href="/adpage?adID=${ad.id}">Team Name: ${ad.playerName}</a></p>
+        <p>Position: ${ad.playerTeam}</p>
+        <p>Name: ${ad.playerPosition}</p>
+        <p>Number: ${ad.number}</p>
+        <p>Price: $${ad.price}</p>
+        <p>Championships: ${ad.championships}</p>
+    </div>
 </body>
 </html>

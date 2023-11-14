@@ -6,6 +6,8 @@ public class Ad {
     private String playerName;
     private String playerTeam;
     private String playerPosition;
+    private String number;
+    private String price;
 
     public Ad(long id, long userId, String playerName, String playerTeam, String playerPosition, String number, String price) {
         this.id = id;
@@ -17,10 +19,6 @@ public class Ad {
         this.price = price;
     }
 
-    private String number;
-    private String price;
-
-
     public Ad(long userId, String playerTeam, String playerPosition, String playerName, String number, String price) {
         this.userId = userId;
         this.playerTeam = playerTeam;
@@ -29,11 +27,7 @@ public class Ad {
         this.number = number;
         this.price = price;
     }
-
-    public Ad() {
-        
-    }
-
+    public Ad() {}
     public long getId() {
         return id;
     }
