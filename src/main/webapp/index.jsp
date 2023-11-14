@@ -19,6 +19,7 @@
         </c:otherwise>
         
     </c:choose>
+
     
    
     <div class="container">

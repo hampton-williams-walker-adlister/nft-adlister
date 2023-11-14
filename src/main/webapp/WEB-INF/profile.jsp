@@ -22,6 +22,8 @@
         </c:forEach>
 
     </div>
-
+    <form method="GET" action="/register">
+        <input type="submit" value="Edit Profile">
+    </form>
 </body>
 </html>

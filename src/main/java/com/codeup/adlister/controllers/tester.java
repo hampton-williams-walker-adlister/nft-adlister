@@ -14,7 +14,11 @@ public class tester extends HttpServlet {
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String teamName = request.getParameter(("teamName"));
-        System.out.println("They picked" + teamName);
+        System.out.println("They picked " + teamName);
+
+        if(teamName.equals("Cowboys")){
+
+        }
 
     }
 }
