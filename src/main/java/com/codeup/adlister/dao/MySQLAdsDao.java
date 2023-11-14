@@ -72,14 +72,13 @@ public class MySQLAdsDao implements Ads {
     public Ad getAdId(long id) {
         PreparedStatement stmt = null;
         try {
-//            String selectStatement = "SELECT * FROM ads WHERE id = ?";
             stmt = connection.prepareStatement("select * from ads where id = ?");
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return new Ad(
                         rs.getLong("id"),
-                        rs.getLong("user"),
+                        rs.getString("user"),
                         rs.getString("player_name"),
                         rs.getString("number"),
                         rs.getString("price"),
@@ -92,6 +91,32 @@ public class MySQLAdsDao implements Ads {
         }
         return new Ad();
     }
+
+
+
+    public String teamNumber(String teamNumber) {
+        String sql = null;
+        try {
+            sql = ("select teams.team_name FROM ads join users on ads.user = users.id join teams on ads.player_team = teams.id where ads.id = ?;");
+
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+            stmt.setLong(2, Long.parseLong(teamNumber));
+
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+
+            //here: extract a team object or value from rs
+            return rs.;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving team name.", e);
+        }
+    }
+
+
+
+
 
     private Ad extractAd(ResultSet rs) throws SQLException {
 
@@ -114,25 +139,7 @@ public class MySQLAdsDao implements Ads {
         return ads;
     }
 
-    public String teamNumber(String teamNumber) {
-        String sql = null;
-        try {
-            sql = ("select teams.team_name FROM ads join users on ads.user = users.id join teams on ads.player_team = teams.id where ads.id = ?;");
 
-            PreparedStatement stmt = connection.prepareStatement(sql);
-
-            stmt.setLong(1, Long.parseLong(teamNumber));
-
-            ResultSet rs = stmt.executeQuery();
-            rs.next();
-
-            //here: extract a team object or value from rs
-            return rs.getString("team_name");
-
-        } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving team name.", e);
-        }
-    }
 
 
 
