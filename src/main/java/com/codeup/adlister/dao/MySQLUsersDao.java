@@ -76,11 +76,13 @@ public class MySQLUsersDao implements Users {
 
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-            return rs.getLong(1);
+            if(rs.next()) {
+                return rs.getLong(1);
+            }
         } catch (SQLException e) {
             throw new RuntimeException("Error updating user", e);
         }
+        return user.getId();
     }
 
 }

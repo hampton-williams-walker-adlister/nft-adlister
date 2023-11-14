@@ -10,52 +10,25 @@
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
         <h1>Please fill in your information.</h1>
+        
         <form action="/register" method="post">
-        
-            <c:choose>
-                
-                <c:when test="${empty sessionScope.user}">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input id="username" name="username" class="form-control" type="text">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input id="email" name="email" class="form-control" type="text">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input id="password" name="password" class="form-control" type="password">
-                    </div>
-                    <div class="form-group">
-                        <label for="confirm_password">Confirm Password</label>
-                        <input id="confirm_password" name="confirm_password" class="form-control" type="password">
-                    </div>
-                    <input type="submit" class="btn btn-primary btn-block">
-                </c:when>
-                
-                <c:otherwise>
-                    <div class="form-group">
-                        <label for="updateUsername">Username</label>
-                        <input id="updateUsername" name="username" class="form-control" type="text" value="${sessionScope.user.username}">
-                    </div>
-                    <div class="form-group">
-                        <label for="updatedEmail">Email</label>
-                        <input id="updatedEmail" name="email" class="form-control" type="text" value="${sessionScope.user.email}">
-                    </div>
-                    <div class="form-group">
-                        <label for="updatedPassword">Password</label>
-                        <input id="updatedPassword" name="password" class="form-control" type="password" value="${sessionScope.user.password}">
-                    </div>
-                    <div class="form-group">
-                        <label for="confirm_updated_password">Confirm Password</label>
-                        <input id="confirm_updated_password" name="confirm_password" class="form-control" type="password" value="${sessionScope.user.password}">
-                    </div>
-                    <input type="submit" class="btn btn-primary btn-block">
-                </c:otherwise>
-            
-            </c:choose>
-        
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" name="username" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" name="email" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" name="password" class="form-control" type="password">
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password</label>
+                <input id="confirm_password" name="confirm_password" class="form-control" type="password">
+            </div>
+            <input type="submit" class="btn btn-primary btn-block">
         </form>
     </div>
 </body>

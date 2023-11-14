@@ -11,6 +11,8 @@ public interface Ads {
     //find multiple records by name
     List<Ad> findMultiple(String name);
 
+    List<Ad> findMultiple(long id);
+
     // insert a new ad and return the new ad's id
     Long insert(Ad ad);
 

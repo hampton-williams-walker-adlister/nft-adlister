@@ -49,6 +49,20 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+
+    @Override
+    public List<Ad> findMultiple(long id) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads WHERE ads.user = ?");
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving one of the ads.", e);
+        }
+    }
+
     //insert ads into database
     @Override
     public Long insert(Ad ad) {
@@ -109,7 +123,6 @@ public class MySQLAdsDao implements Ads {
             String teamName = "";
 
             if(rs.next()) {
-                System.out.println(rs.getString("team_name"));
                 teamName = rs.getString("team_name");
             }
 
@@ -136,7 +149,6 @@ public class MySQLAdsDao implements Ads {
             int championshipYear = 0;
 
             if(rs.next()) {
-                System.out.println(rs.getString("championship_year"));
                 championshipYear = rs.getInt("championship_year");
             }
 
@@ -153,9 +165,9 @@ public class MySQLAdsDao implements Ads {
         return new Ad(
             rs.getLong("id"),
             rs.getLong("user"),
+            rs.getString("player"),
             teamName(rs.getString("player_team")),
             rs.getString("player_position"),
-            rs.getString("player"),
             rs.getString("number"),
             rs.getString("price"),
             playerChampionship(rs.getString("player"))
@@ -169,9 +181,5 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
-
-
-
-
 
 }
