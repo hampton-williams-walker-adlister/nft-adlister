@@ -14,18 +14,34 @@ h1
 color:orange;
 text-align:center;
 }
+.grid
+{
+display: grid;
+column-gap: 50px;
+grid-template-columns: auto auto auto;
+padding: 10px;
+border-style: double;
+border-color :orange ;
+}
+.grid-item
+{
+color: blue;
+border: 5px inset rgba(0, 0, 0, 0.8);
+padding: 20px;
+font-size: 30px;
+text-align: center
+
+}
 
 nav
 {
-background-color: #003594;
-position: -webkit-sticky;
 position: sticky;
 top: 0;
+width:100%;
 }
 
 footer
 {
-
 left: 0;
 bottom: 0;
 width: 100%;

@@ -2,16 +2,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
-    <body>
-        <head>
-            <jsp:include page="partials/head.jsp">
-                <jsp:param name="title" value="Register For Our Site!"  />
-            </jsp:include>
-            <style><jsp:include page="/WEB-INF/partials/css_background.jsp" /></style>
-            <title>Test Page</title>
+<head>
+    <jsp:include page="partials/head.jsp">
+        <jsp:param name="title" value="Register For Our Site!"  />
+    </jsp:include>
+    <style><jsp:include page="/WEB-INF/partials/css_background.jsp" /></style>
+    <title>Test Page</title>
 
-        </head>
+</head>
 
+        <body>
         <main>
             <nav>
             <jsp:include page="/WEB-INF/partials/navbar.jsp" />
