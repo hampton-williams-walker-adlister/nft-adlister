@@ -1,7 +1,5 @@
 use nfl_adlister;
 
-TRUNCATE teams;
-
 INSERT INTO nfl_adlister.teams (team_name) VALUES ('Arizona Cardinals');
 INSERT INTO nfl_adlister.teams (team_name) VALUES ('Atlanta Falcons');
 INSERT INTO nfl_adlister.teams (team_name) VALUES ('Baltimore Ravens');

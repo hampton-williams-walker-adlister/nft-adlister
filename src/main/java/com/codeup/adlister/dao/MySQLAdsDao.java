@@ -81,9 +81,10 @@ public class MySQLAdsDao implements Ads {
                         rs.getLong("id"),
                         rs.getLong("user"),
                         rs.getString("player_name"),
+                        rs.getString("player_team"),
+                        rs.getString("player_position"),
                         rs.getString("number"),
-                        rs.getString("price"),
-                        rs.getString("description")
+                        rs.getString("price")
                 );
             }
         } catch (SQLException e) {
