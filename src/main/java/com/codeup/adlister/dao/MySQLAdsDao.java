@@ -177,10 +177,9 @@ public class MySQLAdsDao implements Ads {
         return new Ad(
             rs.getLong("id"),
             rs.getLong("user"),
-
             rs.getString("player"),
             teamName(rs.getString("player_team")),
-            rs.getString("player_position"),
+            getPlayerPosition(rs.getString("player_position")),
             rs.getString("number"),
             rs.getString("price"),
             playerChampionship(rs.getString("player"))
@@ -227,18 +226,4 @@ public class MySQLAdsDao implements Ads {
         return "";
     }
 
-    public String getChampionships(long id){
-        String sql = null;
-        try {
-//            sql = ("SELECT ads_championships.championship_id from ads_championships " +
-//                    "left join ads on ads.id = ads_championships.player_id");
-            sql = ("SELECT ads_championships.championship_id from ads_championships " +
-                    "left join ads on ads.id = ?");
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setLong(1, id);
-        } catch (SQLException e){
-           e.printStackTrace();
-        }
-        return "";
-    }
 }
