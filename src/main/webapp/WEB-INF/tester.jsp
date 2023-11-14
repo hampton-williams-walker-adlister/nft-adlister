@@ -17,7 +17,7 @@
             <jsp:include page="/WEB-INF/partials/navbar.jsp" />
             </nav>
 
-            <h1>Hello world this is the test page</h1>
+            <h1 class="buffer">Hello world this is the test page</h1>
 
             <h2>Who would you like to view? </h2>
 

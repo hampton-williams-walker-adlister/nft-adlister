@@ -24,14 +24,19 @@
 </nav>
 
 <div class="container">
-    <h1>Here Are all the ads!</h1>
+    <h1 class="buffer">Here Are all the ads!</h1>
 
     <c:forEach var="ad" items="${ads}">
         <div class="grid">
-            <p class="grid-item">
-                Player's Name: ${ad.playerName}, Player's Team: ${ad.playerTeam}, Player's Position: ${ad.playerPosition}, Player's Number: ${ad.number}, Player's Card Price: ${ad.price}</p>
+            <p class="grid-item">Seller's Name: ${ad.userId}</p>
+            <p class="grid-item">Player's Name: ${ad.playerName}</p>
+            <p class="grid-item">Player's Team: ${ad.playerTeam}</p>
+            <p class="grid-item">Player's Position: ${ad.playerPosition}</p>
+            <p class="grid-item">Player's Number: ${ad.number}</p>
+            <p class="grid-item">Card's Price: ${ad.price}</p>
         </div>
     </c:forEach>
+
 </div>
 <footer>
     <h1>That's all folks</h1>
