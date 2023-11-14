@@ -6,6 +6,21 @@ public class Ad {
     private String playerName;
     private String playerTeam;
     private String playerPosition;
+    private String number;
+    private String price;
+    private int championship;
+
+
+    public Ad(long id, long userId, String playerName, String playerTeam, String playerPosition, String number, String price, int championship) {
+        this.id = id;
+        this.userId = userId;
+        this.playerName = playerName;
+        this.playerTeam = playerTeam;
+        this.playerPosition = playerPosition;
+        this.number = number;
+        this.price = price;
+        this.championship = championship;
+    }
 
     public Ad(long id, long userId, String playerName, String playerTeam, String playerPosition, String number, String price) {
         this.id = id;
@@ -17,8 +32,7 @@ public class Ad {
         this.price = price;
     }
 
-    private String number;
-    private String price;
+
 
 
     public Ad(long userId, String playerTeam, String playerPosition, String playerName, String number, String price) {
@@ -72,4 +86,12 @@ public class Ad {
     }
     public String getPrice() {return price; }
     public void setPrice(String price) {this.price = price; }
+
+    public int getChampionship() {
+        return championship;
+    }
+
+    public void setChampionship(int championship) {
+        this.championship = championship;
+    }
 }

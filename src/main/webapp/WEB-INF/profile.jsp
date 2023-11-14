@@ -10,6 +10,8 @@
     <div class="container">
         <h1>Welcome, ${sessionScope.user.username}!</h1>
     </div>
-
+    <form method="GET" action="/register">
+        <input type="submit" value="Edit Profile">
+    </form>
 </body>
 </html>
