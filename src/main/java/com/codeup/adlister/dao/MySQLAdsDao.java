@@ -72,14 +72,13 @@ public class MySQLAdsDao implements Ads {
     public Ad getAdId(long id) {
         PreparedStatement stmt = null;
         try {
-//            String selectStatement = "SELECT * FROM ads WHERE id = ?";
             stmt = connection.prepareStatement("select * from ads where id = ?");
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return new Ad(
                         rs.getLong("id"),
-                        rs.getLong("user"),
+                        rs.getString("user"),
                         rs.getString("player_name"),
                         rs.getString("player_team"),
                         rs.getString("player_position"),
@@ -94,16 +93,73 @@ public class MySQLAdsDao implements Ads {
         return new Ad();
     }
 
+
+
+    public String teamName(String teamNumber) {
+        String sql = null;
+
+        try {
+            sql = ("select teams.team_name FROM ads join users on ads.user = users.id join teams on ads.player_team = teams.id where ads.id = ?;");
+
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+            stmt.setLong(1, Long.parseLong(teamNumber));
+
+            ResultSet rs = stmt.executeQuery();
+
+            String teamName = "";
+
+            if(rs.next()) {
+                System.out.println(rs.getString("team_name"));
+                teamName = rs.getString("team_name");
+            }
+
+            return teamName;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving team name.", e);
+        }
+    }
+
+
+    public int playerChampionship(String playerName) {
+        String sql = null;
+
+        try {
+            sql = ("SELECT championship.championship_year FROM championship JOIN ads_championships ON championship.id = ads_championships.championship_id JOIN ads ON ads_championships.player_id = ads.id WHERE player = ?;");
+
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+            stmt.setString(1, playerName);
+
+            ResultSet rs = stmt.executeQuery();
+
+            int championshipYear = 0;
+
+            if(rs.next()) {
+                System.out.println(rs.getString("championship_year"));
+                championshipYear = rs.getInt("championship_year");
+            }
+
+            return championshipYear;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving team name.", e);
+        }
+    }
+
+
     private Ad extractAd(ResultSet rs) throws SQLException {
 
         return new Ad(
             rs.getLong("id"),
             rs.getLong("user"),
-            teamNumber(rs.getString("player_team")),
+            teamName(rs.getString("player_team")),
             rs.getString("player_position"),
             rs.getString("player"),
             rs.getString("number"),
-            rs.getString("price")
+            rs.getString("price"),
+            playerChampionship(rs.getString("player"))
         );
     }
 
@@ -115,25 +171,7 @@ public class MySQLAdsDao implements Ads {
         return ads;
     }
 
-    public String teamNumber(String teamNumber) {
-        String sql = null;
-        try {
-            sql = ("select teams.team_name FROM ads join users on ads.user = users.id join teams on ads.player_team = teams.id where ads.id = ?;");
 
-            PreparedStatement stmt = connection.prepareStatement(sql);
-
-            stmt.setLong(1, Long.parseLong(teamNumber));
-
-            ResultSet rs = stmt.executeQuery();
-            rs.next();
-
-            //here: extract a team object or value from rs
-            return rs.getString("team_name");
-
-        } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving team name.", e);
-        }
-    }
 
 
 
