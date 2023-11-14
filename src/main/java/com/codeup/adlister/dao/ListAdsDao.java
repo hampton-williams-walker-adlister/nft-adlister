@@ -14,6 +14,9 @@ public class ListAdsDao implements Ads {
         }
         return ads;
     }
+    public Ad getAdId(long id) {
+        return null;
+    }
 
     @Override
     public List<Ad> findMultiple(String name) {

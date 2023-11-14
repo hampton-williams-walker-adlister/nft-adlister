@@ -29,6 +29,11 @@ public class Ad {
         this.number = number;
         this.price = price;
     }
+
+    public Ad() {
+        
+    }
+
     public long getId() {
         return id;
     }
