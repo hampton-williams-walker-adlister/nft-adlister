@@ -27,6 +27,14 @@
     <h1 class="buffer">Here Are all the ads!</h1>
 
     <c:forEach var="ad" items="${ads}">
+<<<<<<< HEAD
+        <div class="col-md-6">
+            <p><a href="/adpage?adID=${ad.id}">Team Name: ${ad.playerName}</a></p>
+            <p>Position: ${ad.playerTeam}</p>
+            <p>Name: ${ad.playerPosition}</p>
+            <p>Number: ${ad.number}</p>
+            <p>Price: $${ad.price}</p>
+=======
         <div class="grid">
             <p class="grid-item">Seller's Name: ${ad.userId}</p>
             <p class="grid-item">Player's Name: ${ad.playerName}</p>
@@ -34,6 +42,7 @@
             <p class="grid-item">Player's Position: ${ad.playerPosition}</p>
             <p class="grid-item">Player's Number: ${ad.number}</p>
             <p class="grid-item">Card's Price: ${ad.price}</p>
+>>>>>>> 4f8274e84a1315cffe7e672ecbded3f73ea36ef7
         </div>
     </c:forEach>
 

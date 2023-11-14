@@ -16,6 +16,8 @@ public interface Ads {
 
     Ad getAdId(long id);
 
+    List<Ad> getUserAds(long id);
+
 }
 
 

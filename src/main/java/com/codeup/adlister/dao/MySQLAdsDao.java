@@ -78,12 +78,13 @@ public class MySQLAdsDao implements Ads {
             if (rs.next()) {
                 return new Ad(
                         rs.getLong("id"),
+                        rs.getLong("user"),
+                        teamNumber(rs.getString("player_team")),
+                        getPlayerPosition(rs.getString("player_position")),
+                        rs.getString("player"),
                         rs.getString("user"),
-                        rs.getString("player_name"),
-                        rs.getString("player_team"),
-                        rs.getString("player_position"),
                         rs.getString("number"),
-                        rs.getString("price")
+                        rs.getInt("price")
                 );
             }
         } catch (SQLException e) {
@@ -92,9 +93,18 @@ public class MySQLAdsDao implements Ads {
         }
         return new Ad();
     }
+    public List<Ad> getUserAds(long id){
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads WHERE player LIKE ?");
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving the user's ads.", e);
+        }
 
-
-
+    }
     public String teamName(String teamNumber) {
         String sql = null;
 
@@ -149,13 +159,14 @@ public class MySQLAdsDao implements Ads {
     }
 
 
+
     private Ad extractAd(ResultSet rs) throws SQLException {
 
         return new Ad(
             rs.getLong("id"),
             rs.getLong("user"),
-            teamName(rs.getString("player_team")),
-            rs.getString("player_position"),
+            teamNumber(rs.getString("player_team")),
+            getPlayerPosition(rs.getString("player_position")),
             rs.getString("player"),
             rs.getString("number"),
             rs.getString("price"),
@@ -170,9 +181,52 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+    public String teamNumber(String teamNumber) {
+        String sql = null;
+        try {
+            sql = ("select teams.team_name FROM ads join users on ads.user = users.id join teams on ads.player_team = teams.id where ads.id = ?;");
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setLong(1, Long.parseLong(teamNumber));
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()) {
+                return rs.getString("team_name");
+            }
 
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving team name.", e);
+        }
+        return "";
+    }
+    public String getPlayerPosition(String positionNumber) {
+        String sql = null;
+        try {
+            sql = ("SELECT position.position_name from ads join position on position.id = ?;");
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setLong(1, Long.parseLong(positionNumber));
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()) {
+                System.out.println(rs.getString("position_name"));
+                return rs.getString("position_name");
+            }
 
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving player position.", e);
+        }
+        return "";
+    }
 
-
-
+    public String getChampionships(long id){
+        String sql = null;
+        try {
+//            sql = ("SELECT ads_championships.championship_id from ads_championships " +
+//                    "left join ads on ads.id = ads_championships.player_id");
+            sql = ("SELECT ads_championships.championship_id from ads_championships " +
+                    "left join ads on ads.id = ?");
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setLong(1, id);
+        } catch (SQLException e){
+           e.printStackTrace();
+        }
+        return "";
+    }
 }
