@@ -24,11 +24,12 @@
 
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
-            <p>${ad.playerName}</p>
-            <p>${ad.playerTeam}</p>
-            <p>${ad.playerPosition}</p>
-            <p>${ad.number}</p>
-            <p>${ad.price}</p>
+            <p>Player: ${ad.playerName}</p>
+            <p>Team: ${ad.playerTeam}</p>
+            <p>Position: ${ad.playerPosition}</p>
+            <p>Number: ${ad.number}</p>
+            <p>Price: $${ad.price}</p>
+            <p>Championship: ${ad.championship}</p>
         </div>
     </c:forEach>
 </div>
