@@ -18,6 +18,13 @@ public class ListAdsDao implements Ads {
         return null;
     }
 
+    @Override
+    public List<Ad> getUserAds(long id) {
+        return null;
+    }
+
+    @Override
+
     public List<Ad> findMultiple(String name) {
         if (ads == null) {
             ads = generateAds();

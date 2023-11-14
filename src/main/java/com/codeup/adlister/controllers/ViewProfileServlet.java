@@ -3,7 +3,6 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,18 +19,16 @@ public class ViewProfileServlet extends HttpServlet {
             return;
         }
 
+
         User currentUser = (User) request.getSession().getAttribute("user");
 
         System.out.println(currentUser.getId());
-
-
 
         List<Ad> adsToView = DaoFactory.getAdsDao().findMultiple(currentUser.getId());
 
         System.out.println("adsToView = " + adsToView);
 
         request.setAttribute("userAds", adsToView);
-
 
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }

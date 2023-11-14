@@ -1,7 +1,5 @@
 use nfl_adlister;
 
-TRUNCATE position;
-
 INSERT INTO nfl_adlister.position (position_name) VALUES ('Center');
 INSERT INTO nfl_adlister.position (position_name) VALUES ('Offensive Guard');
 INSERT INTO nfl_adlister.position (position_name) VALUES ('Offensive Tackle ');
