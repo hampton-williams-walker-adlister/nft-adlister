@@ -22,8 +22,22 @@
         </c:forEach>
 
     </div>
-    <form method="GET" action="/register">
-        <input type="submit" value="Edit Profile">
-    </form>
+    
+    <div>
+        <a href="/update">Edit Profile</a>
+        <h2>My Cards</h2>
+        <br>
+        <c:forEach var="ad" items="${userAds}">
+            <div class="col-md-6">
+                <p>Player: ${ad.playerName}</p>
+                <p>Team: ${ad.playerTeam}</p>
+                <p>Position: ${ad.playerPosition}</p>
+                <p>Number: ${ad.number}</p>
+                <p>Price: $${ad.price}</p>
+                <p>Championship: ${ad.championship}</p>
+            </div>
+        </c:forEach>
+        
+    </div>
 </body>
 </html>

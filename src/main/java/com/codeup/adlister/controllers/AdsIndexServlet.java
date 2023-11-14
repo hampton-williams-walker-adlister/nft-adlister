@@ -15,15 +15,6 @@ import java.util.List;
 public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
-        List<Ad> ads = DaoFactory.getAdsDao().all();
-        for (Ad ad: ads) {
-            System.out.println("name " + ad.getPlayerName());
-            System.out.println("team " + ad.getPlayerTeam());
-            System.out.println("position " + ad.getPlayerPosition());
-            System.out.println("number " + ad.getNumber());
-            System.out.println("$ " + ad.getPrice());
-            System.out.println("championship " + ad.getChampionship());
-        }
         request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
     }
 
