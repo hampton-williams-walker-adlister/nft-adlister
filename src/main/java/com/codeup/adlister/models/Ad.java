@@ -4,22 +4,48 @@ public class Ad {
     private long id;
     private long userId;
     private String playerName;
+    private String playerTeam;
+    private String playerPosition;
+
+    public Ad(long id, long userId, String playerName, String playerTeam, String playerPosition, String number, String price) {
+        this.id = id;
+        this.userId = userId;
+        this.playerName = playerName;
+        this.playerTeam = playerTeam;
+        this.playerPosition = playerPosition;
+        this.number = number;
+        this.price = price;
+    }
+
     private String number;
     private String price;
-    private String description;
 
-    public Ad(long userId, String playerName, String number, String price, String description) {
+
+    public Ad(long userId, String playerTeam, String playerPosition, String playerName, String number, String price) {
         this.userId = userId;
+        this.playerTeam = playerTeam;
+        this.playerPosition = playerPosition;
         this.playerName = playerName;
         this.number = number;
         this.price = price;
-        this.description = description;
     }
     public long getId() {
         return id;
     }
     public void setId(long id) {
         this.id = id;
+    }
+    public String getPlayerTeam() {
+        return playerTeam;
+    }
+    public void setPlayerTeam(String playerTeam) {
+        this.playerTeam = playerTeam;
+    }
+    public String getPlayerPosition() {
+        return playerPosition;
+    }
+    public void setPlayerPosition(String playerPosition) {
+        this.playerPosition = playerPosition;
     }
     public long getUserId() {
         return userId;
@@ -41,6 +67,4 @@ public class Ad {
     }
     public String getPrice() {return price; }
     public void setPrice(String price) {this.price = price; }
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
 }
