@@ -76,3 +76,8 @@ FROM ads
          join users on ads.user = users.id
          join position on ads.player_position = position.id
 where ads.id =1;
+
+select users.user_name as Name
+FROM ads
+         join users on ads.user = users.id
+where ads.id =1;

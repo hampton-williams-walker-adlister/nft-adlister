@@ -5,8 +5,11 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
+    <style><jsp:include page="/WEB-INF/partials/css_background.jsp" /></style>
 </head>
 <body>
+
+<nav>
 <c:choose>
     
     <c:when test="${empty sessionScope.user}">
@@ -18,21 +21,25 @@
     </c:otherwise>
 
 </c:choose>
+</nav>
 
 <div class="container">
-    <h1>Here Are all the ads!</h1>
+    <h1 class="buffer">Here Are all the ads!</h1>
 
     <c:forEach var="ad" items="${ads}">
-        <div class="col-md-6">
-            <p>Player: ${ad.playerName}</p>
-            <p>Team: ${ad.playerTeam}</p>
-            <p>Position: ${ad.playerPosition}</p>
-            <p>Number: ${ad.number}</p>
-            <p>Price: $${ad.price}</p>
-            <p>Championship: ${ad.championship}</p>
+        <div class="grid">
+            <p class="grid-item">Seller's Name: ${ad.userId}</p>
+            <p class="grid-item">Player's Name: ${ad.playerName}</p>
+            <p class="grid-item">Player's Team: ${ad.playerTeam}</p>
+            <p class="grid-item">Player's Position: ${ad.playerPosition}</p>
+            <p class="grid-item">Player's Number: ${ad.number}</p>
+            <p class="grid-item">Card's Price: ${ad.price}</p>
         </div>
     </c:forEach>
-</div>
 
+</div>
+<footer>
+    <h1>That's all folks</h1>
+</footer>
 </body>
 </html>
