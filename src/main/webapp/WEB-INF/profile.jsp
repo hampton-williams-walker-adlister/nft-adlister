@@ -34,7 +34,6 @@
                 <p>Position: ${ad.playerPosition}</p>
                 <p>Number: ${ad.number}</p>
                 <p>Price: $${ad.price}</p>
-                <p>Championship: ${ad.championship}</p>
             </div>
         </c:forEach>
         

@@ -8,7 +8,6 @@
     <style><jsp:include page="/WEB-INF/partials/css_background.jsp" /></style>
 </head>
 <body>
-
 <nav>
 <c:choose>
     
@@ -22,19 +21,20 @@
 
 </c:choose>
 </nav>
-
+<h1 class="buffer">Here Are all the ads!</h1>
 <div class="container">
-    <h1 class="buffer">Here Are all the ads!</h1>
-    <c:forEach var="ad" items="${ads}">
-        <div class="grid">
-            <p class="grid-item">Seller's Name: ${ad.userId}</p>
-            <p class="grid-item"><a href="/adpage?adID=${ad.id}">Player's Name: ${ad.playerName}</p>
-            <p class="grid-item">Player's Team: ${ad.playerTeam}</p>
-            <p class="grid-item">Player's Position: ${ad.playerPosition}</p>
-            <p class="grid-item">Player's Number: ${ad.number}</p>
-            <p class="grid-item">Card's Price: ${ad.price}</p>
-        </div>
-    </c:forEach>
+    <div class="grid gap-3">
+        <c:forEach var="ad" items="${ads}">
+            <div class="grid-item">
+                <p><strong>Seller's Name:</strong> ${ad.userId}</p>
+                <p><a href="/adpage?adID=${ad.id}"><em>Player's Name:</em> ${ad.playerName}</a></p>
+                <p><strong>Player's Team:</strong> ${ad.playerTeam}</p>
+                <p><strong>Player's Position:</strong> ${ad.playerPosition}</p>
+                <p><strong>Player's Number:</strong> ${ad.number}</p>
+                <p><strong>Card's Price:</strong> ${ad.price}</p>
+            </div>
+        </c:forEach>
+    </div>
 </div>
 <footer>
     <h1>That's all folks</h1>

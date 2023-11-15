@@ -43,11 +43,14 @@ border-color :orange ;
 .grid-item
 {
 color: blue;
-border: 5px inset rgba(0, 0, 0, 0.8);
+<%--border: 5px inset rgba(0, 0, 0, 0.8);--%>
+border: 5px solid transparent;
+border-radius: 10px;
 padding: 20px;
-font-size: 30px;
-text-align: center
-
+font-size: 15px;
+<%--text-align: center--%>
+background-color: white;
+opacity: 75%;
 }
 
 <%--nav bar stick--%>
