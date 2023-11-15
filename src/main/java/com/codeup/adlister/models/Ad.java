@@ -4,7 +4,7 @@ public class Ad {
     private long id;
     private long userId;
     private String playerName;
-    private String playerTeam;
+    String playerTeam;
     private String playerPosition;
     private String number;
     private String price;
@@ -31,7 +31,6 @@ public class Ad {
         this.number = number;
         this.price = price;
     }
-
     public Ad(long userId, String playerTeam, String playerPosition, String playerName, String number, String price) {
         this.userId = userId;
         this.playerTeam = playerTeam;

@@ -67,12 +67,15 @@ public class MySQLAdsDao implements Ads {
     @Override
     public Long insert(Ad ad) {
         try {
-            String insertQuery = "INSERT INTO ads(user, player, number, price) VALUES (?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO ads(user, player, player_team, player_position, number, price) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setLong(1, ad.getUserId());
             stmt.setString(2, ad.getPlayerName());
-            stmt.setString(3, ad.getNumber());
-            stmt.setString(4, ad.getPrice());
+            stmt.setString(3, ad.getPlayerTeam());
+            System.out.println(ad.getPlayerTeam());
+            stmt.setString(4, ad.getPlayerPosition());
+            stmt.setString(5, ad.getNumber());
+            stmt.setString(6, ad.getPrice());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -93,12 +96,12 @@ public class MySQLAdsDao implements Ads {
                 return new Ad(
                         rs.getLong("id"),
                         rs.getLong("user"),
+                        rs.getString("player"),
                         teamNumber(rs.getString("player_team")),
                         getPlayerPosition(rs.getString("player_position")),
-                        rs.getString("player"),
-                        rs.getString("user"),
                         rs.getString("number"),
-                        rs.getInt("price")
+                        rs.getString("price"),
+                        rs.getInt("championship")
                 );
             }
         } catch (SQLException e) {
@@ -121,24 +124,18 @@ public class MySQLAdsDao implements Ads {
     }
     public String teamName(String teamNumber) {
         String sql = null;
-
+        System.out.println("This is the number we're getting" + teamNumber);
         try {
             sql = ("select teams.team_name FROM ads join users on ads.user = users.id join teams on ads.player_team = teams.id where ads.id = ?;");
-
             PreparedStatement stmt = connection.prepareStatement(sql);
-
             stmt.setLong(1, Long.parseLong(teamNumber));
-
             ResultSet rs = stmt.executeQuery();
-
             String teamName = "";
-
             if(rs.next()) {
                 teamName = rs.getString("team_name");
+                System.out.println(teamName);
             }
-
             return teamName;
-
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving team name.", e);
         }
@@ -178,7 +175,7 @@ public class MySQLAdsDao implements Ads {
             rs.getLong("id"),
             rs.getLong("user"),
             rs.getString("player"),
-            teamName(rs.getString("player_team")),
+            teamName(rs.getString("id")),
             getPlayerPosition(rs.getString("player_position")),
             rs.getString("number"),
             rs.getString("price"),
