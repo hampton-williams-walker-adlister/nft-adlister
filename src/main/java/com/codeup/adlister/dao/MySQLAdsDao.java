@@ -216,7 +216,6 @@ public class MySQLAdsDao implements Ads {
             stmt.setLong(1, Long.parseLong(positionNumber));
             ResultSet rs = stmt.executeQuery();
             if(rs.next()) {
-                System.out.println(rs.getString("position_name"));
                 return rs.getString("position_name");
             }
 
