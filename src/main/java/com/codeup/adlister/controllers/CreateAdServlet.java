@@ -30,8 +30,8 @@ public class CreateAdServlet extends HttpServlet {
 
         Ad ad = new Ad(
                 loggedInUser.getId(),
-                request.getParameter("playerTeam"),
-                request.getParameter("playerPosition"),
+                request.getParameter(("teamName")),
+                request.getParameter("positionName"),
                 request.getParameter("playerName"),
                 request.getParameter("number"),
                 request.getParameter("price")

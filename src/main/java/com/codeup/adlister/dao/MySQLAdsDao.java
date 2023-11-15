@@ -70,12 +70,15 @@ public class MySQLAdsDao implements Ads {
     @Override
     public Long insert(Ad ad) {
         try {
-            String insertQuery = "INSERT INTO ads(user, player, number, price) VALUES (?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO ads(user, player, player_team, player_position, number, price) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setLong(1, ad.getUserId());
             stmt.setString(2, ad.getPlayerName());
-            stmt.setString(3, ad.getNumber());
-            stmt.setString(4, ad.getPrice());
+            stmt.setString(3, ad.getPlayerTeam());
+            System.out.println(ad.getPlayerTeam());
+            stmt.setString(4, ad.getPlayerPosition());
+            stmt.setString(5, ad.getNumber());
+            stmt.setString(6, ad.getPrice());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -96,12 +99,12 @@ public class MySQLAdsDao implements Ads {
                 return new Ad(
                         rs.getLong("id"),
                         rs.getLong("user"),
+                        rs.getString("player"),
                         teamNumber(rs.getString("player_team")),
                         getPlayerPosition(rs.getString("player_position")),
-                        rs.getString("player"),
-                        rs.getString("user"),
                         rs.getString("number"),
-                        rs.getInt("price")
+                        rs.getString("price"),
+                        rs.getInt("championship")
                 );
             }
         } catch (SQLException e) {
@@ -132,6 +135,7 @@ public class MySQLAdsDao implements Ads {
             String teamName = "";
             while(rs.next()) {
                 teamName = rs.getString("team_name");
+                System.out.println(teamName);
             }
             return teamName;
         } catch (SQLException e) {
