@@ -100,11 +100,10 @@ public class MySQLAdsDao implements Ads {
                         rs.getLong("id"),
                         rs.getLong("user"),
                         rs.getString("player"),
-                        teamNumber(rs.getString("player_team")),
+                        teamNumber(rs.getString("id")),
                         getPlayerPosition(rs.getString("player_position")),
                         rs.getString("number"),
-                        rs.getString("price"),
-                        rs.getInt("championship")
+                        rs.getString("price")
                 );
             }
         } catch (SQLException e) {
@@ -181,8 +180,7 @@ public class MySQLAdsDao implements Ads {
             teamName(rs.getInt("id")),
             getPlayerPosition(rs.getString("player_position")),
             rs.getString("number"),
-            rs.getString("price"),
-            playerChampionship(rs.getString("player"))
+            rs.getString("price")
         );
 
     }

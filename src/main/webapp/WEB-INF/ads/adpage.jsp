@@ -3,37 +3,37 @@
 
 <html>
 <head>
-  <jsp:include page="/WEB-INF/partials/head.jsp">
-    <jsp:param name="title" value="Create a new Ad" />
-  </jsp:include>
-    <style><jsp:include page="/WEB-INF/partials/css_background.jsp" /></style>
+    <jsp:include page="/WEB-INF/partials/head.jsp">
+        <jsp:param name="title" value="Ad Details"/>
+    </jsp:include>
+    <style>
+        <jsp:include page="/WEB-INF/partials/css_background.jsp"/>
+    </style>
 </head>
 <body>
 <c:choose>
-    
+
     <c:when test="${empty sessionScope.user}">
-        <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+        <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
     </c:when>
-    
+
     <c:otherwise>
-        <jsp:include page="/WEB-INF/partials/logged_in_navbar.jsp" />
+        <jsp:include page="/WEB-INF/partials/logged_in_navbar.jsp"/>
     </c:otherwise>
 
 </c:choose>
 <main>
-
-<div class="container">
-    <h1>Here is an individual Ad!</h1>
-    <div class="col-md-6">
-        <p class="zm"><a href="/adpage?adID=${ad.id}">Team Name: ${ad.playerName}</a></p>
-        <p class="zm">Position: ${ad.playerTeam}</p>
-        <p class="zm">Name: ${ad.playerPosition}</p>
-        <p class="zm">Number: ${ad.number}</p>
-        <p class="zm">Price: $${ad.price}</p>
-        <p class="zm">Championships: ${ad.championships}</p>
+    <div class="container">
+        <div class="row grid-item" style="width: 500px; height: 500px; margin-left: 35%; margin-top: 10%; font-size: 25px;">
+            <div class="col justify-content-center">
+                <p><a href="/adpage?adID=${ad.id}">Player: ${ad.playerName}</a></p>
+                <p><strong>Team:</strong> ${ad.playerTeam}</p>
+                <p><strong>Position:</strong> ${ad.playerPosition}</p>
+                <p><strong>Number:</strong> ${ad.number}</p>
+                <p><strong>Price:</strong> $${ad.price}</p>
+            </div>
+        </div>
     </div>
-</div>
-
 </main>
 
 </body>
