@@ -15,18 +15,17 @@ import java.io.IOException;
 @WebServlet(name = "controllers.UpdateServlet", urlPatterns = "/update")
 public class UpdateServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         request.getRequestDispatcher("/WEB-INF/update.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
         User currentUser = (User) request.getSession().getAttribute("user");
-        System.out.println(currentUser.getId());
-        System.out.println(currentUser.getUsername());
+
         //User updated profile info
         String updatedUsername = request.getParameter("updatedUsername");
-        System.out.println(updatedUsername);
         String updatedEmail = request.getParameter("updatedEmail");
-        System.out.println(updatedEmail);
         String updatedPassword = request.getParameter("updatedPassword");
         String updatedPasswordConfirmation = request.getParameter("confirm_updated_password");
 
@@ -50,9 +49,6 @@ public class UpdateServlet extends HttpServlet {
         currentUser.setPassword(updatedHash);
 
         DaoFactory.getUsersDao().update(currentUser);
-        System.out.println(currentUser.getUsername());
-        System.out.println(currentUser.getEmail());
-        System.out.println(currentUser.getId());
         response.sendRedirect("/profile");
     }
 }

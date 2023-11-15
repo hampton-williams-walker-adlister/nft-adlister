@@ -85,4 +85,8 @@ public class MySQLUsersDao implements Users {
         return user.getId();
     }
 
+    public Long delete(User user) {
+        return Long.parseLong("1");
+    }
+
 }

@@ -134,3 +134,18 @@ color:white;
 }
 
 .pd {padding;:10px}
+
+.editBtn {
+
+	color: white;
+	text-decoration: none;
+
+}
+
+.editBtn:active {
+	color: white;
+}
+
+.editBtn:hover {
+	color: white;
+}

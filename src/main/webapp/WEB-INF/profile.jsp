@@ -5,38 +5,29 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Your Profile" />
     </jsp:include>
+    <style><jsp:include page="/WEB-INF/partials/css_background.jsp" /></style>
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/logged_in_navbar.jsp" />
     <div class="container">
         <h1>Welcome, ${sessionScope.user.username}!</h1>
-
-        <c:forEach var="ad" items="${ads}">
-            <div class="col-md-6">
-                <p><a href="/adpage?adID=${ad.id}">Team Name: ${ad.playerName}</a></p>
-                <p>Position: ${ad.playerTeam}</p>
-                <p>Name: ${ad.playerPosition}</p>
-                <p>Number: ${ad.number}</p>
-                <p>Price: $${ad.price}</p>
-            </div>
-        </c:forEach>
-
-    </div>
-    
-    <div>
-        <a href="/update">Edit Profile</a>
-        <h2>My Cards</h2>
         <br>
-        <c:forEach var="ad" items="${userAds}">
-            <div class="col-md-6">
-                <p>Player: ${ad.playerName}</p>
-                <p>Team: ${ad.playerTeam}</p>
-                <p>Position: ${ad.playerPosition}</p>
-                <p>Number: ${ad.number}</p>
-                <p>Price: $${ad.price}</p>
-            </div>
-        </c:forEach>
-        
+        <button type="button" class="btn btn-primary"><a class="editBtn" href="/update">Edit Profile</a></button>
+        <button type="button" class="btn btn-primary"><a class="editBtn" href="/login">Delete Your Profile</a></button>
+        <br>
+        <h2>My Cards</h2>
+        <div class="grid row-gap-3">
+            <c:forEach var="ad" items="${userAds}">
+                <div class="grid-item">
+                    <p><a href="/adpage?adID=${ad.id}">Player: ${ad.playerName}</a></p>
+                    <p>Team: ${ad.playerTeam}</p>
+                    <p>Position: ${ad.playerPosition}</p>
+                    <p>Number: ${ad.number}</p>
+                    <p>Price: $${ad.price}</p>
+                    <p>Championship: ${ad.championship}</p>
+                </div>
+            </c:forEach>
+        </div>
     </div>
 </body>
 </html>
