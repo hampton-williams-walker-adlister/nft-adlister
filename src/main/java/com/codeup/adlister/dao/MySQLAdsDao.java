@@ -2,7 +2,10 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.util.Config;
+import com.mysql.cj.BindValue;
 import com.mysql.cj.jdbc.Driver;
+import org.w3c.dom.ls.LSOutput;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -122,16 +125,15 @@ public class MySQLAdsDao implements Ads {
         }
 
     }
-    public String teamName(String teamNumber) {
+    public String teamName(int teamNumber) {
         String sql = null;
-        System.out.println("This is the number we're getting" + teamNumber);
         try {
-            sql = ("select teams.team_name FROM ads join users on ads.user = users.id join teams on ads.player_team = teams.id where ads.id = ?;");
+            sql = ("select teams.team_name FROM ads join teams on ads.player_team = teams.id where ads.id = ?;");
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setLong(1, Long.parseLong(teamNumber));
+            stmt.setLong(1, teamNumber);
             ResultSet rs = stmt.executeQuery();
             String teamName = "";
-            if(rs.next()) {
+            while(rs.next()) {
                 teamName = rs.getString("team_name");
                 System.out.println(teamName);
             }
@@ -170,17 +172,19 @@ public class MySQLAdsDao implements Ads {
 
 
     private Ad extractAd(ResultSet rs) throws SQLException {
-
+        System.out.println(teamName(rs.getInt("player_team")));
+        System.out.println(rs.getString("player_team"));
         return new Ad(
             rs.getLong("id"),
             rs.getLong("user"),
             rs.getString("player"),
-            teamName(rs.getString("id")),
+            teamName(rs.getInt("id")),
             getPlayerPosition(rs.getString("player_position")),
             rs.getString("number"),
             rs.getString("price"),
             playerChampionship(rs.getString("player"))
         );
+
     }
 
     private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
@@ -221,5 +225,10 @@ public class MySQLAdsDao implements Ads {
         }
         return "";
     }
+
+    public static void main(String[] args) {
+
+    }
+
 
 }

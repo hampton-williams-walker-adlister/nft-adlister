@@ -9,6 +9,17 @@
     <style><jsp:include page="/WEB-INF/partials/css_background.jsp" /></style>
 </head>
 <body>
+<c:choose>
+    
+    <c:when test="${empty sessionScope.user}">
+        <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+    </c:when>
+    
+    <c:otherwise>
+        <jsp:include page="/WEB-INF/partials/logged_in_navbar.jsp" />
+    </c:otherwise>
+
+</c:choose>
 <main>
 
 <div class="container">
