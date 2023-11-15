@@ -28,7 +28,7 @@
     <c:forEach var="ad" items="${ads}">
         <div class="grid">
             <p class="grid-item">Seller's Name: ${ad.userId}</p>
-            <p class="grid-item"><a href="/adpage?adID=${ad.id}">Player's Name: ${ad.playerName}</p>
+            <p class="grid-item"><a href="/adpage?adID=${ad.id}">Player's Name: ${ad.playerName}</a></p>
             <p class="grid-item">Player's Team: ${ad.playerTeam}</p>
             <p class="grid-item">Player's Position: ${ad.playerPosition}</p>
             <p class="grid-item">Player's Number: ${ad.number}</p>
