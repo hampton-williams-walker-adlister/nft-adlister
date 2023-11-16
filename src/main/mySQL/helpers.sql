@@ -81,3 +81,15 @@ select users.user_name as Name
 FROM ads
          join users on ads.user = users.id
 where ads.id =1;
+
+select teams.team_name
+FROM ads
+    join users on ads.user = users.id
+    join teams on ads.player_team = teams.id
+where ads.id = 11;
+
+select teams.team_name as Team
+FROM teams
+         join ads on teams.id  = ads.player_team
+         join users on ads.user = users.id
+;

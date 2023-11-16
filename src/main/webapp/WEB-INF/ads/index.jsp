@@ -21,11 +21,11 @@
 
 </c:choose>
 </nav>
-<h1 class="buffer">Here Are all the ads!</h1>
+<h1 class="buffer">Here are all the ads!</h1>
 <div class="container">
-    <div class="grid gap-3">
+    <div class="grid gap-3 ">
         <c:forEach var="ad" items="${ads}">
-            <div class="grid-item">
+            <div class="grid-item btz">
                 <p><strong>Seller's Name:</strong> ${ad.userId}</p>
                 <p><a href="/adpage?adID=${ad.id}"><em>Player's Name:</em> ${ad.playerName}</a></p>
                 <p><strong>Player's Team:</strong> ${ad.playerTeam}</p>

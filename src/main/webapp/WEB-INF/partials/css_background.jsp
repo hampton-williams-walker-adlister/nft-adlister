@@ -1,6 +1,5 @@
 <%--background image--%>
-body
-{
+body {
 background-image: url("../img/field.jpeg");
 background-repeat: no-repeat;
 background-size: cover;
@@ -13,24 +12,21 @@ background-attachment: fixed;
 margin-top:70px;
 }
 <%--H1 lettering--%>
-h1
-{
+h1 {
 font-size: 60px;
 color:orange;
 text-align:center;
 }
 
 <%--H2 lettering--%>
-h2
-{
+h2 {
 margin-top:30px;
 font-size: 40px;
 color:orange;
 text-align:center;
 }
 <%--card box holds all card info--%>
-.grid
-{
+.grid {
 display: grid;
 column-gap: 25px;
 grid-template-columns: auto auto auto;
@@ -40,8 +36,7 @@ border-color :orange ;
 }
 
 <%--individual cards holding ads info--%>
-.grid-item
-{
+.grid-item {
 color: blue;
 <%--border: 5px inset rgba(0, 0, 0, 0.8);--%>
 border: 5px solid transparent;
@@ -54,16 +49,15 @@ opacity: 75%;
 }
 
 <%--nav bar stick--%>
-nav
-{
+nav {
 position: fixed;
 top: 0;
 width:100%;
 margin-bottom:20px;
+z-index: 1;
 }
 <%-- footer --%>
-footer
-{
+footer {
 bottom: 0;
 width: 100%;
 background-color: #0C6DFD;
@@ -77,14 +71,12 @@ color:orange;
 color: red;
 }
 
-p:hover
-{
+p:hover {
 transform: scale(1.1);
 cursor: zoom-in;
 }
 
-.btns
-{
+.btns {
 font-size: 50px;
 display: grid;
 column-gap: 25px;
@@ -92,8 +84,7 @@ grid-template-columns: auto auto auto;
 padding: 10px;
 }
 
-.btnsS
-{
+.btnsS {
 color: blue;
 border: 5px inset rgba(0, 0, 0, 0.8);
 padding: 20px;
@@ -101,14 +92,12 @@ font-size: 30px;
 text-align: center
 }
 
-.btz:hover
-{
+.btz:hover {
 transform: scale(1.1);
 cursor: zoom-in;
 }
 
-.cmt
-{
+.cmt {
 font-size: 30px;
 display: grid;
 column-gap: 25px;
@@ -116,8 +105,7 @@ grid-template-columns: auto auto auto;
 padding: 10px;
 }
 
-.cmtC
-{
+.cmtC {
 color: blue;
 border: 5px inset rgba(0, 0, 0, 0.8);
 padding: 20px;
@@ -127,19 +115,17 @@ border-style: double;
 border-color :orange ;
 }
 
-.cmtc:hover
-{
+.cmtc:hover {
 background-color:green;
 color:white;
 }
 
-.pd {padding;:10px}
+.pd {
+padding;:10px}
 
 .editBtn {
-
 	color: white;
 	text-decoration: none;
-
 }
 
 .editBtn:active {
@@ -148,4 +134,9 @@ color:white;
 
 .editBtn:hover {
 	color: white;
+}
+
+.CAW {
+font-size: 30px;
+color:orange;
 }

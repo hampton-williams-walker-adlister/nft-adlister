@@ -4,25 +4,26 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Create a new Ad" />
     </jsp:include>
+    <style><jsp:include page="/WEB-INF/partials/css_background.jsp" /></style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/logged_in_navbar.jsp" />
     <div class="container">
         <h1>Create a new Ad</h1>
         <form action="/ads/create" method="post">
-            <div class="form-group">
+            <div class="form-group CAW">
                 <label for="playerName">Player Name</label>
-                <input id="playerName" name="playerName" class="form-control" type="text">
+                <input id="playerName" name="playerName" class="form-control" type="text" placeholder="Player's Name">
             </div>
-            <div class="form-group">
+            <div class="form-group CAW">
                 <label for="number">Number</label>
-                <input id="number" name="number" class="form-control" type="text">
+                <input id="number" name="number" class="form-control" type="text" placeholder="Player's Number">
             </div>
-            <div class="form-group">
+            <div class="form-group CAW">
                 <label>Please Select a Position:</label>
                 <label>
                     <select name="positionName">
-                        <option selected>Teams</option>
+                        <option disabled selected>Positions</option>
                         <option value="1">Center</option>
                         <option value="2">Offensive Guard</option>
                         <option value="3">Offensive Tackle </option>
@@ -44,10 +45,11 @@
                         <option value="19">Punt Returner</option>
                     </select>
             </div>
+            <div class="form-group CAW">
             <label>Please Select a Team:</label>
             <label>
                 <select name="teamName">
-                    <option selected>Teams</option>
+                    <option disabled selected>Teams</option>
                     <option value="1"> Arizona Cardinals </option>
                     <option value="2"> Atlanta Falcons </option>
                     <option value="3"> Baltimore Ravens </option>
@@ -82,13 +84,14 @@
                     <option value="32">Washington Commanders</option>
                 </select>
             </label>
-            <div class="form-group">
-                <label for="price">Price</label>
-                <input id="price" name="price" class="form-control" type="text">
             </div>
-            <div class="form-group">
+            <div class="form-group CAW">
+                <label for="price">Price</label>
+                <input id="price" name="price" class="form-control" type="text" placeholder="Card's Price">
+            </div>
+            <div class="form-group CAW">
                 <label for="description">Description</label>
-                <textarea id="description" name="description" class="form-control" type="text"></textarea>
+                <textarea id="description" name="description" class="form-control" type="text" placeholder="Cards Description"></textarea>
             </div>
             <input type="submit" class="btn btn-block btn-primary">
         </form>
