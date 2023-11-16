@@ -24,7 +24,12 @@
                     <p>Position: ${ad.playerPosition}</p>
                     <p>Number: ${ad.number}</p>
                     <p>Price: $${ad.price}</p>
-                    <p>Championship: ${ad.championship}</p>
+                        <form action="/delete?adID=${ad.id}&action=edit" method="post">
+                            <input class="btn btn-sm btn-increment" type="submit" name="edit" value="EDIT">
+                        </form>
+                        <form action="/delete?adID=${ad.id}&action=delete" method="post">
+                            <input class="btn btn-danger btn-sm btn-decrement" type="submit" name="delete" value="DELETE">
+                        </form>
                 </div>
             </c:forEach>
         </div>

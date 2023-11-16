@@ -18,6 +18,8 @@ public interface Ads {
 
     Ad getAdId(long id);
 
+    void delete(long id);
+
     List<Ad> getUserAds(long id);
 
 }

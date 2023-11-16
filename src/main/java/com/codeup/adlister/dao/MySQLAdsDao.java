@@ -207,6 +207,17 @@ public class MySQLAdsDao implements Ads {
         }
         return "";
     }
+
+    public void delete(long id) {
+        try {
+            String insertQuery = "DELETE FROM ads WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting product #" + id, e);
+        }
+    }
     public String getPlayerPosition(String positionNumber) {
         String sql = null;
         try {
